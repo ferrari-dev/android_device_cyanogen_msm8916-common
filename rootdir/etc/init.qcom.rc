@@ -61,6 +61,8 @@ on post-fs-data
     #Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0770 root system
     chmod 2770 /data/misc/perfd
+    restorecon_recursive /data/misc/perfd
+    rm /data/misc/perfd/mpctl
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
@@ -84,6 +86,9 @@ on post-fs-data
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    restorecon_recursive /data/misc/wifi/sockets
+    rm /data/misc/misc/wifi/sockets/p2p0
+    rm /data/misc/misc/wifi/sockets/wlan0
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
@@ -252,6 +257,9 @@ on boot
 
     # camera sockets
     mkdir /data/misc/camera 0770 camera camera
+    restorecon_recursive /data/misc/camera
+    rm /data/misc/camera/cam_socket1
+    rm /data/misc/camera/cam_socket2
 
     # Create directory used by display clients
     mkdir /data/misc/display 0770 system graphics
