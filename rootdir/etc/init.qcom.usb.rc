@@ -1029,6 +1029,7 @@ on property:sys.usb.config=ncm,adb
 on property:sys.usb.config=midi
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor ${ro.usb.vid}
+    write /sys/class/android_usb/android0/idVendor ${ro.usb.vid.midi}
     write /sys/class/android_usb/android0/idProduct ${ro.usb.id.midi}
     write /sys/class/android_usb/android0/functions midi
     write /sys/class/android_usb/android0/enable 1
@@ -1038,6 +1039,7 @@ on property:sys.usb.config=midi,adb
     stop adbd
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor ${ro.usb.vid}
+    write /sys/class/android_usb/android0/idVendor ${ro.usb.vid.midi}
     write /sys/class/android_usb/android0/idProduct ${ro.usb.id.midi_adb}
     write /sys/class/android_usb/android0/functions midi,adb
     write /sys/class/android_usb/android0/enable 1
